@@ -1,9 +1,9 @@
 # Basic
-title: lucyDad
-subtitle: lucyDad的开发博客
+title: derk
+subtitle: derk的开发博客
 welcome_message: <a href="https://github.com/lucyDad" target="_blank">我的github地址</a>
 description: 欢迎访问.
-creator: <a href="http://onev.cat">@onevcat</a>
+creator: derk #<a href="http://onev.cat">derk</a>
 
 url: "http://vno.onevcat.com"
 
@@ -22,7 +22,7 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
+    # - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
@@ -37,10 +37,10 @@ comment:
     
 # Social
 social:
-    weibo: 1687040362/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
+    #weibo: 1687040362/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
     github: lucyDad
-    twitter: hx
-    gplus: 107108267983477358170
+    #twitter: hx
+    #gplus: 107108267983477358170
     mail: riverfly1987@163.com
 
 # Google Analytics
