@@ -1,6 +1,6 @@
 # Basic
-title: Kobe
-subtitle: Kobe的开发博客
+title: lucyDad
+subtitle: lucyDad的开发博客
 welcome_message: <a href="https://github.com/lucyDad" target="_blank">我的github地址</a>
 description: 欢迎访问.
 creator: <a href="http://onev.cat">@onevcat</a>
@@ -37,8 +37,8 @@ comment:
     
 # Social
 social:
-    weibo: https://weibo.com/1687040362/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
-    github: https://github.com/lucyDad
+    weibo: 1687040362/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1
+    github: lucyDad
     twitter: hx
     gplus: 107108267983477358170
     mail: riverfly1987@163.com
