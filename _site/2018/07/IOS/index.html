@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Hello World - Vno</title>
-  <meta name="description" content="This is my first">
+  <title>ArrowTipsView</title>
+  <meta name="description" content="效果">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Hello World - Vno">
-  <meta name="twitter:description" content="This is my first">
+  <meta name="twitter:title" content="ArrowTipsView">
+  <meta name="twitter:description" content="效果">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Hello World - Vno">
-  <meta property="og:description" content="This is my first">
+  <meta property="og:title" content="ArrowTipsView">
+  <meta property="og:description" content="效果">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,8 +24,8 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://localhost:4000/2018/06/Hello/">
-  <link rel="alternate" type="application/rss+xml" title="lucyDad" href="http://localhost:4000/feed.xml">
+  <link rel="canonical" href="http://localhost:4000/2018/07/IOS/">
+  <link rel="alternate" type="application/rss+xml" title="HX" href="http://localhost:4000/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
   
@@ -45,10 +45,10 @@
     <div class="panel-main__inner panel-inverted">
     <div class="panel-main__content">
 
-        <a href="/#blog" title="前往 lucyDad 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="lucyDad logo" class="panel-cover__logo logo" /></a>
-        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for lucyDad" class="blog-button">lucyDad</a></h1>
+        <a href="/#blog" title="前往 HX 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="HX logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for HX" class="blog-button">HX</a></h1>
         
-        <span class="panel-cover__subtitle panel-subtitle">lucyDad的开发博客</span>
+        <span class="panel-cover__subtitle panel-subtitle">HX的开发博客</span>
         
         <hr class="panel-cover__divider" />
         <p class="panel-cover__description">欢迎访问.</p>
@@ -124,13 +124,60 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-06-17 10:01:24 +0800" itemprop="datePublished" class="post-meta__date date">2018-06-17</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2018-07-09 17:58:24 +0900" itemprop="datePublished" class="post-meta__date date">2018-07-09</time> &#8226; <span class="post-meta__tags tags"></span>
     </div>
-    <h1 class="post-title">Hello World - Vno</h1>
+    <h1 class="post-title">ArrowTipsView</h1>
   </header>
 
   <section class="post">
-    <p>This is my first</p>
+    <h1 id="效果">效果</h1>
+<p><img src="http://localhost:4000/assets/images/arrowTips/demo.png" alt="" /></p>
+
+<h1 id="github项目地址">github项目地址</h1>
+<p><a href="https://github.com/lucyDad/XXArrowTips">项目地址</a></p>
+
+<h1 id="介绍">介绍</h1>
+<p>各种引导页需要使用渐变色箭头的提示View。
+XXArrowTipsView提供可配置的功能，方便开发者配置展示</p>
+
+<h1 id="使用方法">使用方法</h1>
+
+<ol>
+  <li>传入需要显示箭头view的父view</li>
+  <li>传入箭头view中箭头所指向的点位置</li>
+  <li>箭头view的配置选项</li>
+</ol>
+
+<ul>
+  <li>(instancetype)showInSuperView:(UIView *)superView point:(CGPoint)point configs:(XXArrowTipsViewConfigs *)configs</li>
+</ul>
+
+<h2 id="配置选项">配置选项</h2>
+
+<p>目前开放的可配置选项:</p>
+
+<ol>
+  <li>marginEdgeInsets  // 中间文字离边缘的间距(默认为（10, 10, 10, 10）);</li>
+  <li>titleText // 需要显示的文本(不能为空);</li>
+  <li>gradientColors // 渐变的颜色</li>
+  <li>textFont// 文本字体大小</li>
+  <li>textColor // 文本颜色</li>
+  <li>cornerRadius // 整个view的cornerRadius</li>
+  <li>arrowDirection// 箭头方向</li>
+</ol>
+
+<h2 id="操作">操作</h2>
+
+<h3 id="启动显示定时器">启动显示定时器</h3>
+
+<ul>
+  <li>(void)startShowTimer:(CGFloat)time block:(showTimerEndBlock)block</li>
+</ul>
+
+<h3 id="点击view的回调处理">点击View的回调处理</h3>
+
+<p>typedef void(^pressArrowTipsViewBlock)(XXArrowTipsView *view)</p>
+
 
   </section>
 </article>
@@ -147,8 +194,8 @@
     <script>
     
     var disqus_config = function () {
-        this.page.url = "http://localhost:4000/2018/06/Hello/";
-        this.page.identifier = "/2018/06/Hello/";
+        this.page.url = "http://localhost:4000/2018/07/IOS/";
+        this.page.identifier = "/2018/07/IOS/";
     };
 
     var disqus_shortname = 'vno-jekyll';
@@ -172,8 +219,8 @@
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-06-17 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
-        <span class="footer__copyright">本站由 <a href="http://onev.cat">@onevcat</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-07-09 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 HX 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
     </footer>
 </section>
 

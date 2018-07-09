@@ -1,21 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>lucyDad</title>
+    <title>HX</title>
     <description>欢迎访问.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 17 Jun 2018 14:33:20 +0800</pubDate>
-    <lastBuildDate>Sun, 17 Jun 2018 14:33:20 +0800</lastBuildDate>
+    <pubDate>Mon, 09 Jul 2018 18:50:54 +0800</pubDate>
+    <lastBuildDate>Mon, 09 Jul 2018 18:50:54 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
-        <title>Hello World - Vno</title>
-        <description>&lt;p&gt;This is my first&lt;/p&gt;
+        <title>ArrowTipsView</title>
+        <description>&lt;h1 id=&quot;效果&quot;&gt;效果&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/arrowTips/demo.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;github项目地址&quot;&gt;github项目地址&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lucyDad/XXArrowTips&quot;&gt;项目地址&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;介绍&quot;&gt;介绍&lt;/h1&gt;
+&lt;p&gt;各种引导页需要使用渐变色箭头的提示View。
+XXArrowTipsView提供可配置的功能，方便开发者配置展示&lt;/p&gt;
+
+&lt;h1 id=&quot;使用方法&quot;&gt;使用方法&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;传入需要显示箭头view的父view&lt;/li&gt;
+  &lt;li&gt;传入箭头view中箭头所指向的点位置&lt;/li&gt;
+  &lt;li&gt;箭头view的配置选项&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;(instancetype)showInSuperView:(UIView *)superView point:(CGPoint)point configs:(XXArrowTipsViewConfigs *)configs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;配置选项&quot;&gt;配置选项&lt;/h2&gt;
+
+&lt;p&gt;目前开放的可配置选项:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;marginEdgeInsets  // 中间文字离边缘的间距(默认为（10, 10, 10, 10）);&lt;/li&gt;
+  &lt;li&gt;titleText // 需要显示的文本(不能为空);&lt;/li&gt;
+  &lt;li&gt;gradientColors // 渐变的颜色&lt;/li&gt;
+  &lt;li&gt;textFont// 文本字体大小&lt;/li&gt;
+  &lt;li&gt;textColor // 文本颜色&lt;/li&gt;
+  &lt;li&gt;cornerRadius // 整个view的cornerRadius&lt;/li&gt;
+  &lt;li&gt;arrowDirection// 箭头方向&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;操作&quot;&gt;操作&lt;/h2&gt;
+
+&lt;h3 id=&quot;启动显示定时器&quot;&gt;启动显示定时器&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;(void)startShowTimer:(CGFloat)time block:(showTimerEndBlock)block&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;点击view的回调处理&quot;&gt;点击View的回调处理&lt;/h3&gt;
+
+&lt;p&gt;typedef void(^pressArrowTipsViewBlock)(XXArrowTipsView *view)&lt;/p&gt;
+
 </description>
-        <pubDate>Sun, 17 Jun 2018 10:01:24 +0800</pubDate>
-        <link>http://localhost:4000/2018/06/Hello/</link>
-        <guid isPermaLink="true">http://localhost:4000/2018/06/Hello/</guid>
+        <pubDate>Mon, 09 Jul 2018 16:58:24 +0800</pubDate>
+        <link>http://localhost:4000/2018/07/IOS/</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/07/IOS/</guid>
         
         
       </item>

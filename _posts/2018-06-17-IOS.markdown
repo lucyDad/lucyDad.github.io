@@ -5,7 +5,10 @@ date: 2018-07-09 17:58:24.000000000 +09:00
 ---
 
 # 效果
-![](../assets/images/arrowTips/demo.png)
+![]({{ "/assets/images/arrowTips/demo.png" | absolute_url }})
+
+# github项目地址
+[项目地址](https://github.com/lucyDad/XXArrowTips)
 
 # 介绍
 各种引导页需要使用渐变色箭头的提示View。
