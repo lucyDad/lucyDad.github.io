@@ -5,8 +5,8 @@
     <description>欢迎访问.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 11 Jul 2018 14:51:57 +0800</pubDate>
-    <lastBuildDate>Wed, 11 Jul 2018 14:51:57 +0800</lastBuildDate>
+    <pubDate>Mon, 30 Dec 2019 14:44:04 +0800</pubDate>
+    <lastBuildDate>Mon, 30 Dec 2019 14:44:04 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
@@ -18,46 +18,65 @@
 &lt;p&gt;&lt;a href=&quot;https://github.com/lucyDad/XXArrowTips&quot;&gt;项目地址&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;介绍&quot;&gt;介绍&lt;/h1&gt;
-&lt;p&gt;各种引导页需要使用渐变色箭头的提示View。
-XXArrowTipsView提供可配置的功能，方便开发者配置展示&lt;/p&gt;
+&lt;p&gt;FDArrowTipsView是带有箭头指向的提示view，箭头指向有上下左右四个方向，分别可以自定义指定，同时中间内容展示部分的view也可自定义。该工程提供了便捷的文本内容的箭头view和带列表选项内容的箭头view，同时也提供了方便点击空白处取消当前箭头view的带有背景的方法，用户可根据具体的使用场景设置不同的配置选项进行使用。&lt;/p&gt;
 
 &lt;h1 id=&quot;使用方法&quot;&gt;使用方法&lt;/h1&gt;
 
-&lt;ol&gt;
-  &lt;li&gt;传入需要显示箭头view的父view&lt;/li&gt;
-  &lt;li&gt;传入箭头view中箭头所指向的点位置&lt;/li&gt;
-  &lt;li&gt;箭头view的配置选项&lt;/li&gt;
-&lt;/ol&gt;
+&lt;p&gt;UIView+ArrowTipsView.h为方便view直接添加箭头view的分类，包含的方法有：&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;(instancetype)showInSuperView:(UIView *)superView point:(CGPoint)point configs:(XXArrowTipsViewConfigs *)configs&lt;/li&gt;
-&lt;/ul&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/// 显示带有文本的箭头指向view（箭头view的最大宽度为当前view的宽度）
+/// @param text 文本内容
+/// @param point 箭头指向的点
+- (void)showArrowTipsViewWithText:(NSString *)text point:(CGPoint)point;
+
+/// 显示荡悠文本的固定宽度的箭头指向view
+/// @param text 文本内容
+/// @param maxWidth 最大显示宽度
+/// @param point 箭头指向的点
+- (void)showArrowTipsViewWithText:(NSString *)text maxWidth:(CGFloat)maxWidth point:(CGPoint)point;
+
+/// 根据传入配置显示列表内容的箭头指向view
+/// @param listConfig 列表内容的view配置选项
+/// @param tipConfig 整个箭头view的配置选项
+/// @param point 箭头指向的点
+/// @param clickBlock 点击列表选项的回调
+- (FDArrowTipsView *)showArrowTipsViewWithListConfig:(FDArrowCustomListViewConfig *)listConfig
+                                   withTipConfig:(FDArrowTipsViewConfig *)tipConfig
+                                       withPoint:(CGPoint)point
+                                      clickBlock:(void(^)(NSInteger index))clickBlock;
+
+/// 根据配置显示箭头指向view
+/// @param config 整个箭头view的配置选项
+/// @param customView 自定义的view（内部根据自定义view显示，忽略起frame.origin值）
+/// @param point 箭头指向的点
+- (FDArrowTipsView *)showArrowTipsViewWithConfig:(FDArrowTipsViewConfig *)config
+                              withCustomView:(UIView *)customView
+                                       point:(CGPoint)point;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;同时以上函数均提供带背景的类似方法&lt;/p&gt;
 
 &lt;h2 id=&quot;配置选项&quot;&gt;配置选项&lt;/h2&gt;
 
 &lt;p&gt;目前开放的可配置选项:&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;marginEdgeInsets  // 中间文字离边缘的间距(默认为（10, 10, 10, 10）);&lt;/li&gt;
-  &lt;li&gt;titleText // 需要显示的文本(不能为空);&lt;/li&gt;
-  &lt;li&gt;gradientColors // 渐变的颜色&lt;/li&gt;
-  &lt;li&gt;textFont// 文本字体大小&lt;/li&gt;
-  &lt;li&gt;textColor // 文本颜色&lt;/li&gt;
-  &lt;li&gt;cornerRadius // 整个view的cornerRadius&lt;/li&gt;
-  &lt;li&gt;arrowDirection// 箭头方向&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) CGFloat  contentCornerRadius; ///&amp;gt; 整个内容view的圆角, 默认10&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) UIEdgeInsets  contentEdgeInsets;  ///&amp;gt; 内容view的间距（默认[10,10,10,10]）&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, strong) UIColor *gradientBeginColor; // 默认从左到右渐变 (想要纯色的话，渐变颜色设置相同即可)&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, strong) UIColor *gradientEndColor;&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) CGPoint  gradientBeginPoint;  ///&amp;gt; 渐变开始点，默认[0, 0]&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) CGPoint  gradientEndPoint;    ///&amp;gt; 渐变结束点，默认[0, 1]&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) FDArrowDirection  originDirection;    ///&amp;gt; 初始的箭头指向，默认top&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) CGSize  arrowSize;    ///&amp;gt; 渐变结束点，默认[10, 10]&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) BOOL  autoAdjustPos;  ///&amp;gt; 是否自动调整显示位置（默认NO）&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) BOOL  autoTimeOutClose;  ///&amp;gt; 是否超时自动关闭（默认YES）&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) BOOL  isStartTimer;   ///&amp;gt; 是否启动定时器（默认NO）&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) NSInteger  timeOutTime;   ///&amp;gt; 定时器超时的时长（默认3s）&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) CGFloat  animationTime;   ///&amp;gt; 动画的时长（默认0.5s）&lt;/li&gt;
+  &lt;li&gt;@property (nonatomic, assign) CGFloat  fixedOffset; ///&amp;gt; 默认0.0, 设置了此值的话,如果point在正常范围内，则箭头偏移为固定值&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;h2 id=&quot;操作&quot;&gt;操作&lt;/h2&gt;
-
-&lt;h3 id=&quot;启动显示定时器&quot;&gt;启动显示定时器&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;(void)startShowTimer:(CGFloat)time block:(showTimerEndBlock)block&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;点击view的回调处理&quot;&gt;点击View的回调处理&lt;/h3&gt;
-
-&lt;p&gt;typedef void(^pressArrowTipsViewBlock)(XXArrowTipsView *view)&lt;/p&gt;
 
 </description>
         <pubDate>Mon, 09 Jul 2018 16:58:24 +0800</pubDate>

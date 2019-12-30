@@ -137,46 +137,65 @@
 <p><a href="https://github.com/lucyDad/XXArrowTips">项目地址</a></p>
 
 <h1 id="介绍">介绍</h1>
-<p>各种引导页需要使用渐变色箭头的提示View。
-XXArrowTipsView提供可配置的功能，方便开发者配置展示</p>
+<p>FDArrowTipsView是带有箭头指向的提示view，箭头指向有上下左右四个方向，分别可以自定义指定，同时中间内容展示部分的view也可自定义。该工程提供了便捷的文本内容的箭头view和带列表选项内容的箭头view，同时也提供了方便点击空白处取消当前箭头view的带有背景的方法，用户可根据具体的使用场景设置不同的配置选项进行使用。</p>
 
 <h1 id="使用方法">使用方法</h1>
 
-<ol>
-  <li>传入需要显示箭头view的父view</li>
-  <li>传入箭头view中箭头所指向的点位置</li>
-  <li>箭头view的配置选项</li>
-</ol>
+<p>UIView+ArrowTipsView.h为方便view直接添加箭头view的分类，包含的方法有：</p>
 
-<ul>
-  <li>(instancetype)showInSuperView:(UIView *)superView point:(CGPoint)point configs:(XXArrowTipsViewConfigs *)configs</li>
-</ul>
+<div class="highlighter-rouge"><pre class="highlight"><code>/// 显示带有文本的箭头指向view（箭头view的最大宽度为当前view的宽度）
+/// @param text 文本内容
+/// @param point 箭头指向的点
+- (void)showArrowTipsViewWithText:(NSString *)text point:(CGPoint)point;
+
+/// 显示荡悠文本的固定宽度的箭头指向view
+/// @param text 文本内容
+/// @param maxWidth 最大显示宽度
+/// @param point 箭头指向的点
+- (void)showArrowTipsViewWithText:(NSString *)text maxWidth:(CGFloat)maxWidth point:(CGPoint)point;
+
+/// 根据传入配置显示列表内容的箭头指向view
+/// @param listConfig 列表内容的view配置选项
+/// @param tipConfig 整个箭头view的配置选项
+/// @param point 箭头指向的点
+/// @param clickBlock 点击列表选项的回调
+- (FDArrowTipsView *)showArrowTipsViewWithListConfig:(FDArrowCustomListViewConfig *)listConfig
+                                   withTipConfig:(FDArrowTipsViewConfig *)tipConfig
+                                       withPoint:(CGPoint)point
+                                      clickBlock:(void(^)(NSInteger index))clickBlock;
+
+/// 根据配置显示箭头指向view
+/// @param config 整个箭头view的配置选项
+/// @param customView 自定义的view（内部根据自定义view显示，忽略起frame.origin值）
+/// @param point 箭头指向的点
+- (FDArrowTipsView *)showArrowTipsViewWithConfig:(FDArrowTipsViewConfig *)config
+                              withCustomView:(UIView *)customView
+                                       point:(CGPoint)point;
+</code></pre>
+</div>
+
+<p>同时以上函数均提供带背景的类似方法</p>
 
 <h2 id="配置选项">配置选项</h2>
 
 <p>目前开放的可配置选项:</p>
 
 <ol>
-  <li>marginEdgeInsets  // 中间文字离边缘的间距(默认为（10, 10, 10, 10）);</li>
-  <li>titleText // 需要显示的文本(不能为空);</li>
-  <li>gradientColors // 渐变的颜色</li>
-  <li>textFont// 文本字体大小</li>
-  <li>textColor // 文本颜色</li>
-  <li>cornerRadius // 整个view的cornerRadius</li>
-  <li>arrowDirection// 箭头方向</li>
+  <li>@property (nonatomic, assign) CGFloat  contentCornerRadius; ///&gt; 整个内容view的圆角, 默认10</li>
+  <li>@property (nonatomic, assign) UIEdgeInsets  contentEdgeInsets;  ///&gt; 内容view的间距（默认[10,10,10,10]）</li>
+  <li>@property (nonatomic, strong) UIColor *gradientBeginColor; // 默认从左到右渐变 (想要纯色的话，渐变颜色设置相同即可)</li>
+  <li>@property (nonatomic, strong) UIColor *gradientEndColor;</li>
+  <li>@property (nonatomic, assign) CGPoint  gradientBeginPoint;  ///&gt; 渐变开始点，默认[0, 0]</li>
+  <li>@property (nonatomic, assign) CGPoint  gradientEndPoint;    ///&gt; 渐变结束点，默认[0, 1]</li>
+  <li>@property (nonatomic, assign) FDArrowDirection  originDirection;    ///&gt; 初始的箭头指向，默认top</li>
+  <li>@property (nonatomic, assign) CGSize  arrowSize;    ///&gt; 渐变结束点，默认[10, 10]</li>
+  <li>@property (nonatomic, assign) BOOL  autoAdjustPos;  ///&gt; 是否自动调整显示位置（默认NO）</li>
+  <li>@property (nonatomic, assign) BOOL  autoTimeOutClose;  ///&gt; 是否超时自动关闭（默认YES）</li>
+  <li>@property (nonatomic, assign) BOOL  isStartTimer;   ///&gt; 是否启动定时器（默认NO）</li>
+  <li>@property (nonatomic, assign) NSInteger  timeOutTime;   ///&gt; 定时器超时的时长（默认3s）</li>
+  <li>@property (nonatomic, assign) CGFloat  animationTime;   ///&gt; 动画的时长（默认0.5s）</li>
+  <li>@property (nonatomic, assign) CGFloat  fixedOffset; ///&gt; 默认0.0, 设置了此值的话,如果point在正常范围内，则箭头偏移为固定值</li>
 </ol>
-
-<h2 id="操作">操作</h2>
-
-<h3 id="启动显示定时器">启动显示定时器</h3>
-
-<ul>
-  <li>(void)startShowTimer:(CGFloat)time block:(showTimerEndBlock)block</li>
-</ul>
-
-<h3 id="点击view的回调处理">点击View的回调处理</h3>
-
-<p>typedef void(^pressArrowTipsViewBlock)(XXArrowTipsView *view)</p>
 
 
   </section>
@@ -219,8 +238,8 @@ XXArrowTipsView提供可配置的功能，方便开发者配置展示</p>
             <section class="footer">
     <footer>
     	<span class="footer__copyright">本站点采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享 署名-非商业性使用-相同方式共享 4.0 国际 许可协议</a></span>
-        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2018-07-11 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
-        <span class="footer__copyright">本站由 HX 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2018</span>
+        <span class="footer__copyright">由 <a href="https://jekyllrb.com">Jekyll</a> 于 2019-12-30 生成，感谢 <a href="https://www.digitalocean.com/?refcode=30ed2d146762">Digital Ocean</a> 为本站提供稳定的 VPS 服务</span>
+        <span class="footer__copyright">本站由 HX 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 作为主题，您可以在 GitHub 找到<a href="https://github.com/onevcat/OneV-s-Den">本站源码</a> - &copy; 2019</span>
     </footer>
 </section>
 
