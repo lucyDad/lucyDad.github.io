@@ -1,9 +1,9 @@
 ---
 layout: post
-title: ArrowTipsView
+title: 可配置箭头指示view
 date: 2018-07-09 17:58:24.000000000 +09:00
-categories: original
 ---
+
 
 # 效果
 ![]({{ "/assets/images/arrowTips/demo.png" | absolute_url }})
@@ -49,7 +49,7 @@ UIView+ArrowTipsView.h为方便view直接添加箭头view的分类，包含的�
 
 同时以上函数均提供带背景的类似方法
 
-## 配置选项
+# 配置选项
 
 目前开放的可配置选项:
 
