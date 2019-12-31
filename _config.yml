@@ -9,6 +9,15 @@ url: "http://vno.onevcat.com"
 
 permalink: /:year/:month/:title/
 
+locale: zh-CN
+
+category_archive: 
+  type: liquid 
+  path: /categories/ 
+tag_archive: 
+  type: liquid 
+  path: /tags/
+
 # Format
 highlighter: rouge
 

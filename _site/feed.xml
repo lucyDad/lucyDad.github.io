@@ -5,9 +5,64 @@
     <description>欢迎访问.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 30 Dec 2019 14:44:04 +0800</pubDate>
-    <lastBuildDate>Mon, 30 Dec 2019 14:44:04 +0800</lastBuildDate>
+    <pubDate>Tue, 31 Dec 2019 10:28:41 +0800</pubDate>
+    <lastBuildDate>Tue, 31 Dec 2019 10:28:41 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
+    
+      <item>
+        <title>应用弹层管理工具</title>
+        <description>&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
+&lt;p&gt;在不同的app应用内，基本都会存在随时需要下发一些应用内消息通知，不管是通过IM通知还是其他什么方式手动触发，当消息通知到达时，需要展示一些及时或者排队的弹层UI来展示通知给用户，让用户进行选择。但是这种弹层触发的时间点并不固定，是很随机出现的，这就会导致某些特殊的场景下，很难控制到弹层的显示逻辑和顺序，譬如需要在某个支付页面不显示这些弹层，我们可能想到的简单处理办法是在支付页面显示时添加控制弹层是否显示的逻辑，但是这种处理方式的问题在于：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;代码侵入性高，弹层的逻辑代码侵入到了支付页面；&lt;/li&gt;
+  &lt;li&gt;可重用性低， 更多页面需要采取同样的控制策略时，就需要不断的添加重复处理代码；&lt;/li&gt;
+  &lt;li&gt;可维护性差，当弹层本身控制逻辑有修改的时候，会导致很多的调用代码需要修改。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;那么有没有更好一点的办法，可以解决这些问题并且同时满足以下条件：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;在整个App的生命周期内，弹层触发时间点不固定&lt;/li&gt;
+  &lt;li&gt;可自由控制不同页面是否显示&lt;/li&gt;
+  &lt;li&gt;多个弹层消息可排队显示&lt;/li&gt;
+  &lt;li&gt;多个弹层消息可不同层级显示&lt;/li&gt;
+  &lt;li&gt;多个弹层自动消失&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;方案&quot;&gt;方案&lt;/h1&gt;
+
+&lt;h2 id=&quot;时序图&quot;&gt;时序图&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/popWindow/sequence.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;流程图&quot;&gt;流程图&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/assets/images/popWindow/popwindowflow.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;总结&quot;&gt;总结&lt;/h1&gt;
+
+&lt;p&gt;以上的方案中有两个比较核心的地方：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;定时器轮询，这种方式用来定期检测当前正在显示的页面是否符合显示要求，同时可以定期显示消息队列中的排队消息。&lt;/li&gt;
+  &lt;li&gt;window的层级显示管理，弹层管理负责创建和销毁window，当前需要显示的view被创建的window包裹，所以弹层管理只需要按照定时器的轮询实时的处理window的显示即可。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;同时这种方案存在一定的弊端：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;定时器的轮询时间如何界定？ 这个只能根据一定的实际试验值，一般情况下1s的样子即可，如果需要更精确的处理弹层的显示，可缩短弹层管理的轮询时间&lt;/li&gt;
+  &lt;li&gt;如果外部传入的view自己操作直接removeFromSuperview，那么在定时器的单位时间内，view被移除了，但是包裹在外层的window还未移出，需要等到下一个定时触发点才能消失，这会导致定时器单位时间内可能有window还在最上层，不过这种情况如果需要更精确的控制，依然可以采用缩短弹层管理的轮询时间解决，或者外部遵守接口规则，消失时调用弹层的消失接口即可。&lt;/li&gt;
+  &lt;li&gt;弹层需要遵守自动消失的规则， 因为定时器的时间是有上限的，如果一直在应用内不断循环，难免给人一种没法接受的感觉，同时控制不好的话，容易引起内存的泄漏，所以所有的弹层需要遵循用户不操作，也有个最大的显示时长的规则，当然如果是长久存在弹层，可以考虑定时器一直循环，但是最好还是看看有没有其他更好的方案。&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Mon, 30 Dec 2019 16:58:24 +0800</pubDate>
+        <link>http://localhost:4000/2019/12/IOS/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/12/IOS/</guid>
+        
+        
+      </item>
     
       <item>
         <title>ArrowTipsView</title>
@@ -83,6 +138,8 @@
         <link>http://localhost:4000/2018/07/IOS/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/07/IOS/</guid>
         
+        
+        <category>original</category>
         
       </item>
     
