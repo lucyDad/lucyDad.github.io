@@ -2,6 +2,7 @@
 layout: post
 title: 可配置箭头指示view
 date: 2018-07-09 17:58:24.000000000 +09:00
+tags: [UI组件]
 ---
 
 

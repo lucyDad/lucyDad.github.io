@@ -5,13 +5,19 @@
     <description>欢迎访问.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 31 Dec 2019 10:40:02 +0800</pubDate>
-    <lastBuildDate>Tue, 31 Dec 2019 10:40:02 +0800</lastBuildDate>
+    <pubDate>Tue, 31 Dec 2019 11:09:24 +0800</pubDate>
+    <lastBuildDate>Tue, 31 Dec 2019 11:09:24 +0800</lastBuildDate>
     <generator>Jekyll v3.4.0</generator>
     
       <item>
         <title>应用弹层管理工具</title>
-        <description>&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
+        <description>&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;本文章是我在实际的弹层需求开发中，将所遇到的问题和前前后后使用的解决方案汇总的一个说明，主要介绍了应用内弹层管理工具如何进行设计，详细流程图以及存在的一些弊端的分析，如果你刚好有这一块的需求，可以参考一下，同时可以讨论一下更好的解决方案。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;弹层在如今很多的app内应用普遍，为了更好的将产品服务触达到用户，同时以此来针对不同用户的选择进行相应的用户画像，所以一个好的弹层管理工具是可以更方便的服务到应用。&lt;/p&gt;
+
+&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
 &lt;p&gt;在不同的app应用内，基本都会存在随时需要下发一些应用内消息通知，不管是通过IM通知还是其他什么方式手动触发，当消息通知到达时，需要展示一些及时或者排队的弹层UI来展示通知给用户，让用户进行选择。但是这种弹层触发的时间点并不固定，是很随机出现的，这就会导致某些特殊的场景下，很难控制到弹层的显示逻辑和顺序，譬如需要在某个支付页面不显示这些弹层，我们可能想到的简单处理办法是在支付页面显示时添加控制弹层是否显示的逻辑，但是这种处理方式的问题在于：&lt;/p&gt;
 
 &lt;ol&gt;
@@ -60,6 +66,8 @@
         <pubDate>Mon, 30 Dec 2019 16:58:24 +0800</pubDate>
         <link>http://localhost:4000/2019/12/IOS/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/12/IOS/</guid>
+        
+        <category>UI管理工具</category>
         
         
       </item>
@@ -137,6 +145,8 @@
         <pubDate>Mon, 09 Jul 2018 16:58:24 +0800</pubDate>
         <link>http://localhost:4000/2018/07/IOS/</link>
         <guid isPermaLink="true">http://localhost:4000/2018/07/IOS/</guid>
+        
+        <category>UI组件</category>
         
         
       </item>
